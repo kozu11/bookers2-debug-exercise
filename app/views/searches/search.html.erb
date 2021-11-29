@@ -1,0 +1,48 @@
+<% if @model == "book" %>
+ <% if @books.present? %>
+<h1>Books search for "<%= params[:search] %>"</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td><%= attachment_image_tag book.user, :profile_image, :fill, 30, 30, fallback: 'no-image-icon.jpg' %></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+   　一致する投稿はありません
+  <% end %>
+  
+<% elsif @model == "user" %>
+  <% if @users.present? %>
+  <h1>Users search for "<%= params[:search] %>"</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user|%>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: 'no-image-icon.jpg' %></td>
+          <td><%= user.name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    一致する名前結果はありません
+  <% end %>
+<% end %>

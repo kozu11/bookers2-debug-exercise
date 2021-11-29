@@ -23,4 +23,16 @@ class User < ApplicationRecord
   def is_followed_by(user)
     reverse_of_relationships.where(follower_id: user.id).exists?
   end
+  
+  def User.search(search, model, method)
+    if method == "partical"
+      User.where('name LIKE ?', "%#{search}%")
+    elsif method == "backward"
+      User.where('name LIKE ?', "%#{search}")
+    elsif method == "forward"
+      User.where('name LIKE ?', "#{search}%")
+    elsif method == "perfect"
+      User.where(name: search)
+    end
+  end
 end
