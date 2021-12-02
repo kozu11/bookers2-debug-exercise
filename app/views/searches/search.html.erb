@@ -1,6 +1,6 @@
 <% if @model == "book" %>
  <% if @books.present? %>
-<h1>Books search for "<%= params[:search] %>"</h1>
+<h1>Books search for "<%= @search %>"</h1>
   <table class="table">
     <thead>
       <tr>
@@ -25,7 +25,7 @@
   
 <% elsif @model == "user" %>
   <% if @users.present? %>
-  <h1>Users search for "<%= params[:search] %>"</h1>
+  <h1>Users search for "<%= @search %>"</h1>
     <table class="table">
       <thead>
         <tr>
