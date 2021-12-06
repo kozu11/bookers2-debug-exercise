@@ -1,0 +1,6 @@
+$("#book_<%= @book.id %> .comments-count").html("コメント数: <%= @book.book_comments.count %>");
+<!--class="comments_area"にrenderで指定した部分テンプレートに更新-->
+$(".book_comments").html("<%= j(render 'book_comments/comment-index', book: @book) %>");
+<!--indexとshowページのコメント数-->
+$("#book_comment_comment").val("");
+<!--フォーム送信後のフォーム内を空に-->

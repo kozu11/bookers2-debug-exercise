@@ -1,0 +1,17 @@
+<h1>"<%= @another_entry.user.name %>さんとのチャット</h1>
+
+<% @room.messages.each do |message| %>
+<table>
+  <tbody>
+    <tr>
+      <td><%= message.content %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+
+<%= form_with model: @message, url: messages_path, local: true do |f| %>
+  <%= f.text_field :content, cols: 50, rows:3 %><br>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit '送信' %>
+<% end %>
